@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -50,9 +51,14 @@ public class DbRecordViewerActivity extends AppCompatActivity {
         viewModel.createTableRows(this, tableName, new Consumer<List<TableRow>>() {
             @Override
             public void accept(List<TableRow> tableRows) throws Exception {
-                for (TableRow row: tableRows) {
+                for (TableRow row : tableRows) {
                     table.addView(row);
                 }
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                Log.e("createTableRows", throwable.getLocalizedMessage());
             }
         });
     }

@@ -29,7 +29,9 @@ public class DbRecordsViewModel extends DatabaseViewModel<RecordsViewerUseCase> 
     public static final int FIELD_TYPE_BLOB = 4;
 
     public void createTableRows(final Context context,
-                                String tableName, Consumer<List<TableRow>> subscriber) {
+                                String tableName,
+                                Consumer<List<TableRow>> subscriber,
+                                Consumer<Throwable> throwable) {
         subscriptions.add(getUseCase().fetchRecords(tableName)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -39,7 +41,7 @@ public class DbRecordsViewModel extends DatabaseViewModel<RecordsViewerUseCase> 
                         return getTableRows(context, cursor);
                     }
                 })
-                .subscribe(subscriber));
+                .subscribe(subscriber, throwable));
     }
 
 

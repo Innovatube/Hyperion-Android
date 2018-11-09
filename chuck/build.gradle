@@ -1,18 +1,24 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = project.libraryGroup
+version = project.libraryVersion
 
 android {
-    compileSdkVersion 28
-
-
+    compileSdkVersion project.compileSdkVersion
+    buildToolsVersion project.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode buildVersionCode()
+        versionName version
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
 
+    lintOptions {
+        abortOnError false
     }
 
     buildTypes {
@@ -21,7 +27,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -31,6 +36,7 @@ dependencies {
     api "com.android.support:design:${project.versionSupportLibrary}"
     annotationProcessor "com.google.auto.service:auto-service:${project.versionAutoService}"
     api 'com.readystatesoftware.chuck:library:1.1.0'
+    releaseApi 'com.readystatesoftware.chuck:library-no-op:1.1.0'
 }
 repositories {
     mavenCentral()

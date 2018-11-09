@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.willowtreeapps.hyperion.plugin.v1.HyperionIgnore;
 import com.willowtreeapps.hyperion.sqlite.R;
@@ -60,6 +61,11 @@ public class TablesListActivity extends AppCompatActivity implements TablesListA
             @Override
             public void accept(List<TableItem> tableItems) throws Exception {
                 adapter.setData(tableItems);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                Log.e("loadTables", throwable.getLocalizedMessage());
             }
         });
     }

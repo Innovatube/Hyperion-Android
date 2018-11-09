@@ -24,4 +24,5 @@
     <string name="screen_recorder_desc">Record, save, and share a video of your app.</string>
     <string name="geiger_counter_desc">Check animation performance by listening for dropped frames.</string>
     <string name="chuck_desc">An in-app HTTP inspector for Android OkHttp clients</string>
+    <string name="hchuck_plugin_name">Chuck HTTP</string>
 </resources>
