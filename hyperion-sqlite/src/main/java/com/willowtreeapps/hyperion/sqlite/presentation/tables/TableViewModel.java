@@ -19,10 +19,10 @@ public class TableViewModel extends DatabaseViewModel<TableUseCase> {
         return new TablesUseCaseImpl(db);
     }
 
-    public void loadTables(Consumer<List<TableItem>> subscriber) {
+    public void loadTables(Consumer<List<TableItem>> subscriber, Consumer<Throwable> throwable) {
         subscriptions.add(getUseCase().fetchDatabaseTables()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber));
+                .subscribe(subscriber, throwable));
     }
 }

@@ -3,7 +3,6 @@ package com.willowtreeapps.hyperion.sample;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-
 import com.readystatesoftware.chuck.ChuckInterceptor;
 import com.willowtreeapps.hyperion.sample.api.RetrofitService;
 import com.willowtreeapps.hyperion.sample.database.Wearther;
